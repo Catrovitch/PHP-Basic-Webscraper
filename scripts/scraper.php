@@ -34,15 +34,25 @@ $products = $crawler->filter('ul.pricing-table li.title')->each(function ($node)
     ];
 });
 
-// Display the extracted product information
+// Specify the CSV file path
+$csvFilePath = 'output.csv';
+
+// Open the CSV file for writing
+$csvFile = fopen($csvFilePath, 'w');
+
+// Write the CSV header
+fputcsv($csvFile, ['Product Name', 'Price', 'Specifications']);
+
+// Write each product information to the CSV file
 foreach ($products as $product) {
-    echo 'Product Name: ' . $product['name'] . PHP_EOL;
-    echo 'Price: ' . $product['price'] . PHP_EOL;
-
-    echo 'Specifications:' . PHP_EOL;
-    foreach ($product['specs'] as $spec) {
-        echo '  - ' . $spec . PHP_EOL;
-    }
-
-    echo PHP_EOL; // Add a line break for better readability
+    // Combine specifications into a single string
+    $specsString = implode(", ", $product['specs']);
+    
+    // Write a row to the CSV file
+    fputcsv($csvFile, [$product['name'], $product['price'], $specsString]);
 }
+
+// Close the CSV file
+fclose($csvFile);
+
+echo "CSV file created successfully: $csvFilePath\n";

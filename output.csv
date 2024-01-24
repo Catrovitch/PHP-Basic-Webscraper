@@ -1,0 +1,13 @@
+"Product Name",Price,Specifications
+"Single Opteron 12TB","59€ / kk 3kk laskutusjakso","Opteron 2419 HE suoritin, 24GB ECC RAM, 4x3TB SATA levyt, 1Gbps yhteysnopeus"
+"Single Opteron 32TB","99€ / kk 3kk laskutusjakso","Opteron 2419 HE suoritin, 24GB ECC RAM, 4x8TB SATA levyt, 1Gbps yhteysnopeus"
+"Single Opteron 48TB","149€ / kk 3kk laskutusjakso","Opteron 2419 HE suoritin, 24GB ECC RAM, 4x12TB SATA levyt, 1Gbps yhteysnopeus"
+"Single Opteron 64TB","199€ / kk 3kk laskutusjakso","Opteron 2419 HE suoritin, 48GB ECC RAM, 4x16TB SATA levyt, 1Gbps yhteysnopeus"
+"Tiedostopalvelin 36TB","119€ / kk 3kk laskutusjakso","Xeon L5630 Suoritin, 36GB Ram, 12x3TB SATA 7200rpm levyt, 2x240GB SATA SSD käyttöjärjestelmä levyt, 1Gbps yhteysnopeus"
+"Tiedostopalvelin 96TB","249€ / kk 3kk laskutusjakso","Xeon L5640 Suoritin, 36GB Ram, 12x8TB SATA 7200rpm levyt, 2x240GB SATA SSD käyttöjärjestelmä levyt, 1Gbps yhteysnopeus"
+"Tiedostopalvelin 144TB","399€ / kk 3kk laskutusjakso","2kpl Xeon L5640 Suorittimia, 144GB Ram, 12x12TB SATA 7200rpm levyt, 2x480GB SATA SSD käyttöjärjestelmä levyt, 1Gbps yhteysnopeus"
+"Tiedostopalvelin 192TB","599€ / kk 3kk laskutusjakso","2kpl Xeon X5660 Suorittimia, 144GB Ram, 12x16TB SATA 7200rpm levyt, 2x3640GB SATA SSD käyttöjärjestelmä levyt, 1Gbps yhteysnopeus"
+"EPyC 36TB  ","499€ / kk 3kk laskutusjakso","AMD EPyC 7551 32ydintä/64 säiettä - 256GB DDR4 ECC Muistia, 24x3TB SATA 7200rpm levyt, 2x2000GB NVMe käyttöjärjestelmä sekä cache levyt, 1Gbps yhteysnopeus"
+"EPyC 192TB 10Gbps","899€ / kk 3kk laskutusjakso","AMD EPyC 7551 32ydintä/64 säiettä - 256GB DDR4 ECC Muistia, 24x8TB SATA 7200rpm levyt, 2x2000GB NVMe käyttöjärjestelmä sekä cache levyt, 10Gbps yhteysnopeus"
+"EPyC 288TB 10Gbps","1399€ / kk 3kk laskutusjakso","AMD EPyC 7551 32ydintä/64 säiettä - 256GB DDR4 ECC Muistia, 24x12TB SATA 7200rpm levyt, 2x2000GB NVMe käyttöjärjestelmä sekä cache levyt, 10Gbps20Gbps yhteysnopeus*"
+"EPyC 384TB 20Gbps","2599€ / kk 3kk laskutusjakso","2*AMD EPyC 7551 64ydintä/128 säiettä - 512GB DDR4 ECC Muistia, 24x16TB SATA 7200rpm levyt, 6x2000GB NVMe käyttöjärjestelmä sekä cache levyt, 20Gbps yhteysnopeus"
