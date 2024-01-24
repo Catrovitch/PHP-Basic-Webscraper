@@ -1,0 +1,12 @@
+{
+    "name": "catrovitch/php-webscraper",
+    "description": "A basic webscraper using PHP",
+    "type": "project",
+    "license": "none",
+    "autoload": {
+        "psr-4": {
+            "Catrovitch\\PhpWebscraper\\": "src/"
+        }
+    },
+    "require": {}
+}
