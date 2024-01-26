@@ -2,7 +2,6 @@
 require 'vendor/autoload.php';
 
 use GuzzleHttp\Client;
-use Symfony\Component\DomCrawler\Crawler;
 
 // Target URL
 $url = 'http://www.magnacapax.fi/vuokrapalvelimet.php';
@@ -14,42 +13,42 @@ $client = new Client();
 $response = $client->request('GET', $url);
 
 // Get the HTML content
-$html = $response->getBody()->getContents();
+$htmlString = (string) $response->getBody();
 
-// Create a new instance of the Symfony DomCrawler
-$crawler = new Crawler($html);
+// Suppress any warnings related to HTML parsing
+libxml_use_internal_errors(true);
 
-// Extract product information from the pricing table
-$products = $crawler->filter('ul.pricing-table li.title')->each(function ($node) {
-    $name = $node->filter('a')->count() > 0 ? $node->filter('a')->text() : '';
-    $price = $node->nextAll()->filter('li.price')->count() > 0 ? $node->nextAll()->filter('li.price')->text() : '';
-    $specs = $node->nextAll()->filter('li.bullet-item')->each(function ($specNode) {
-        return $specNode->text();
-    });
+// Load HTML content into a DOMDocument
+$doc = new DOMDocument();
+$doc->loadHTML($htmlString);
 
-    return [
-        'name' => $name,
-        'price' => $price,
-        'specs' => $specs,
-    ];
-});
+// Create an XPath object
+$xpath = new DOMXPath($doc);
 
-// Specify the CSV file path
-$csvFilePath = 'output.csv';
+// Define XPath expression to select product containers with either class
+$products = $xpath->evaluate('//div[@class="medium-3 column"]/ul[contains(@class, "pricing-table")]');
+
+// Check if any products are found
+if ($products->length === 0) {
+    echo "No products found." . PHP_EOL;
+    exit; // Stop execution if no products are found
+}
 
 // Open the CSV file for writing
+$csvFilePath = 'output.csv';
 $csvFile = fopen($csvFilePath, 'w');
 
 // Write the CSV header
-fputcsv($csvFile, ['Product Name', 'Price', 'Specifications']);
+fputcsv($csvFile, ['Product Name', 'Price']);
 
-// Write each product information to the CSV file
+// Iterate through products and write information to the CSV file
 foreach ($products as $product) {
-    // Combine specifications into a single string
-    $specsString = implode(", ", $product['specs']);
-    
+    // Extract product name and price
+    $title = $xpath->evaluate('string(.//li[contains(@class, "title")]/a)', $product);
+    $price = $xpath->evaluate('string(.//li[contains(@class, "price")])', $product);
+
     // Write a row to the CSV file
-    fputcsv($csvFile, [$product['name'], $product['price'], $specsString]);
+    fputcsv($csvFile, [$title, $price]);
 }
 
 // Close the CSV file
